@@ -36,6 +36,8 @@ class App extends React.PureComponent {
         this.refs.logon.value = "";
         this.refs.width.value = "";
         this.refs.select.value = "";
+        this.setState({value : ""});
+
         fetch('/', {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},

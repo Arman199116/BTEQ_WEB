@@ -14,12 +14,16 @@ class App extends React.PureComponent {
     }
 
     componentDidMount () {
-            setInterval (() => {
-                fetch('/get')
-                    .then(res => res.json())
-                    .then(value => this.setState({ value : value.value }))
-                    .catch(e => console.log(e))
-            }, 500);
+        this.timerID = setInterval (() => {
+            fetch('/get')
+                .then(res => res.json())
+                .then(out_value => this.setState({value : out_value.data}))
+                .catch(e => console.log(e))
+        }, 500);
+    }
+
+    componentWillUnmount () {
+        clearInterval(this.timerID);
     }
 
     handleSubmit = (event) => {

@@ -46,8 +46,10 @@ app.get('/get', function (req, res) {
         if (fs.existsSync('out.bteq')) {
             fs.readFile('out.bteq', 'utf8', function(err, data) {
                 if (err) throw err;
-                res.json({ value : data });
+                res.json({data});
             });
+        } else {
+            res.end();
         }
     } catch(err) {
         console.error(err);
